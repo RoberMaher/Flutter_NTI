@@ -8,8 +8,13 @@ class BankAccount{
   num balance = 8000;
 
   void deposit(num amount){
-    if (amount < this.balance){
         this.balance += amount;
+        print("New Balance: $balance");
+  }
+
+  void withdrow(num amount){
+    if (amount < this.balance){
+        this.balance -= amount;
         print("New Balance: $balance");
     } 
     else
