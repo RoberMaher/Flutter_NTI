@@ -2,24 +2,28 @@ import 'dart:io';
 
 // import 'Car.dart';
 // import 'BankAccount.dart';
-import 'Rectangle.dart';
+// import 'Rectangle.dart';
+import 'Book.dart';
 
-void main(){
-  // Car(model: "KIA", year: 2011);
-  
-  // BankAccount account = BankAccount();
+void main() {
+  Book book1 = Book(
+    title: 'To Kill a Mockingbird',
+    author: 'Harper Lee',
+    publicationYear: 1960,
+  );
 
-  // print("Enter amount to deposit:");
-  // num amountForDeposit = num.parse(stdin.readLineSync()!);
-  // account.deposit(amountForDeposit);
+  Book book2 = Book(
+    title: '1984',
+    author: 'George Orwell',
+    publicationYear: 1949,
+  );
 
+  book1.printInfo();
+  print('---');
+  book2.printInfo();
 
-  // print("Enter amount to withdrow:");
-  // num amountForWithdrow = num.parse(stdin.readLineSync()!);
-  // account.withdrow(amountForWithdrow);
-
-  Rectangle rectangle = Rectangle(lengh: 5, width: 10);
-   num area = rectangle.calculateArea();
-   print("The Area of Rectangle is: $area");
-
+  // Rectangle rectangle = Rectangle(lengh: 5, width: 10);
+  // num area = rectangle.calculateArea();
+  // print("The Area of Rectangle is: $area");
 }
+
