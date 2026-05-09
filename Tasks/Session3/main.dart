@@ -26,4 +26,3 @@ void main() {
   // num area = rectangle.calculateArea();
   // print("The Area of Rectangle is: $area");
 }
-
