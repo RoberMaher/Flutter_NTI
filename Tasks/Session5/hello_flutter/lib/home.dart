@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/CustomAppBar.dart';
 import 'package:hello_flutter/item.dart';
 
 class Home extends StatelessWidget {
@@ -24,33 +25,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 50,
-                  color: const Color.fromARGB(255, 90, 39, 200),
-                  child: Text(
-                    'الاخبار',
-                    style: TextStyle(color: Colors.white, fontSize: 26),
-                  ),
-                ),
-              ),
-              SizedBox(width: 5),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 50,
-                  color: const Color.fromARGB(255, 90, 39, 200),
-                  child: Text(
-                    'المجلات',
-                    style: TextStyle(color: Colors.white, fontSize: 26),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          CustomAppBar(),
 
           Expanded(
             child: GridView.builder(
