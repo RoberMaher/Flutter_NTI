@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:login_screen/button.dart';
 import 'package:login_screen/input_label.dart';
 import 'package:login_screen/item.dart';
-import 'package:login_screen/page_title.dart';  
+import 'package:login_screen/my_app.dart';
+import 'package:login_screen/page_title.dart';
 import 'package:login_screen/titles.dart';
 
 class Home extends StatelessWidget {
-  const Home({
-    super.key,
-  });
+  static const String routeName = 'home';
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +30,21 @@ class Home extends StatelessWidget {
               InputLabel(text: "Enter your Password", icon: Icons.lock),
               SizedBox(height: 50),
             ],
-          ),
-          Button(text: "SIGN UP",),
+          ),   
+          Positioned(
+            bottom: 300,
+            child: GestureDetector(
+              child: Button(
+                text: "SIGN IN",
+                onTap: () {
+                  Navigator.pushNamed(context, CounterScreen.routeName);
+                },
+              ),
+            ),
+          ),      
         ],
       ),
+      
     );
   }
 }
