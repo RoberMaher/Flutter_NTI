@@ -69,14 +69,13 @@ class _HomeState extends State<Home> {
               Button(
                 text: "SIGN IN",
                 onTap: () {
-                  final emailValid =
-                      emailFormKey.currentState!.validate();
+                  final emailValid = emailFormKey.currentState!.validate();
 
-                  final passwordValid =
-                      passwordFormKey.currentState!.validate();
+                  final passwordValid = passwordFormKey.currentState!
+                      .validate();
 
                   if (emailValid && passwordValid) {
-                    Navigator.pushNamed(context, '/counter');
+                    Navigator.pushReplacementNamed(context, '/XoGame');
                   }
                 },
               ),
