@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:login_screen/button.dart';
-import 'package:login_screen/input_label.dart';
 import 'package:login_screen/item.dart';
-import 'package:login_screen/my_app.dart';
 import 'package:login_screen/page_title.dart';
+import 'package:login_screen/sign_up_form.dart';
 import 'package:login_screen/titles.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   static const String routeName = 'home';
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  final emailFormKey = GlobalKey<FormState>();
+  final passwordFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,34 +27,65 @@ class Home extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Container(color: const Color.fromARGB(255, 18, 79, 94)),
+
           Column(
             children: [
-              SizedBox(height: 100),
-              PageTitle(text: "MOMENTUM"),
-              Titles(title1: "GROWTH", title2: "HAPPENS", title3: "TODAY"),
-              SizedBox(height: 100),
-              Item(text1: "SIGN IN", text2: "SIGN UP"),
-              SizedBox(height: 50),
-              InputLabel(text: "Enter your Email", icon: Icons.email),
-              SizedBox(height: 30),
-              InputLabel(text: "Enter your Password", icon: Icons.lock),
-              SizedBox(height: 50),
-            ],
-          ),   
-          Positioned(
-            bottom: 300,
-            child: GestureDetector(
-              child: Button(
+              const Spacer(flex: 2),
+
+              const PageTitle(text: "MOMENTUM"),
+
+              const Titles(
+                title1: "GROWTH",
+                title2: "HAPPENS",
+                title3: "TODAY",
+              ),
+
+              const Spacer(flex: 1),
+
+              const Item(text1: "SIGN IN", text2: "SIGN UP"),
+
+              const SizedBox(height: 50),
+
+              CustomFormField(
+                text: "Enter your Email",
+                icon: Icons.email,
+                controller: emailController,
+                isPassword: false,
+                formKey: emailFormKey,
+              ),
+
+              const SizedBox(height: 30),
+
+              CustomFormField(
+                text: "Enter your Password",
+                icon: Icons.lock,
+                controller: passwordController,
+                isPassword: true,
+                formKey: passwordFormKey,
+              ),
+
+              const SizedBox(height: 50),
+
+              Button(
                 text: "SIGN IN",
                 onTap: () {
-                  Navigator.pushNamed(context, CounterScreen.routeName);
+                  final emailValid =
+                      emailFormKey.currentState!.validate();
+
+                  final passwordValid =
+                      passwordFormKey.currentState!.validate();
+
+                  if (emailValid && passwordValid) {
+                    Navigator.pushNamed(context, '/counter');
+                  }
                 },
               ),
-            ),
-          ),      
+
+              const Spacer(flex: 2),
+            ],
+          ),
         ],
       ),
-      
     );
   }
 }
