@@ -81,6 +81,7 @@ class _HomeState extends State<Home> {
                         Navigator.pushReplacementNamed(context, '/XoGame');
                       }
                     },
+                    color: Color.fromARGB(255, 30, 156, 150).withOpacity(0.5),
                   ),
           
                   const Spacer(flex: 2),

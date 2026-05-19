@@ -20,7 +20,7 @@ class BoardButton extends StatelessWidget {
           backgroundColor: Colors.amber,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         ),
-        child: Text(value),
+        child: Text(value, style: TextStyle(color: Colors.blue, fontSize: 30)),
       ),
     );
   }

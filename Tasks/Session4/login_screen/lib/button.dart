@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class Button extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
+  final Color color;
 
   const Button({
     required this.text,
     required this.onTap,
+    required this.color,
     super.key,
   });
 
@@ -15,7 +17,7 @@ class Button extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap, 
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(255, 30, 156, 150).withOpacity(0.5),
+        backgroundColor: color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
         ),
