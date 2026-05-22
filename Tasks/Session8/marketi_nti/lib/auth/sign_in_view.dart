@@ -6,11 +6,7 @@ import 'package:marketi_nti/auth/widgets/custom_text_form_field.dart';
 import 'package:marketi_nti/auth/widgets/skip_button.dart';
 
 class SignInView extends StatefulWidget {
-  late TextEditingController emailController;
-  late TextEditingController passwordController;
   bool value = false;
-
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   SignInView({super.key});
 
@@ -19,17 +15,22 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
+  late TextEditingController emailController = TextEditingController();
+  late TextEditingController passwordController = TextEditingController();
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   initState() {
     super.initState();
-    widget.emailController = TextEditingController();
-    widget.passwordController = TextEditingController();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
   }
 
   @override
   dispose() {
-    widget.emailController.dispose();
-    widget.passwordController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -59,21 +60,24 @@ class _SignInViewState extends State<SignInView> {
                 SizedBox(height: 32.h),
 
                 Form(
-                  key: widget.formKey,
+                  key: formKey,
                   child: Column(
                     children: [
                       CustomTextFormField(
+                        controller: emailController,
                         iconPath: 'assets/icons/evaEmailOutline2.png',
-                        labelText: 'Username or Email',
+                        hint: 'Username or Email',
+                        isEmail: true,
                       ),
 
                       SizedBox(height: 14.h),
 
                       CustomTextFormField(
+                        controller: passwordController,
                         iconPath: 'assets/icons/Password_Icon.png',
-                        labelText: 'Password',
+                        hint: 'Password',
+                        isPassword: true,
                       ),
-
                       Row(
                         children: [
                           Row(
@@ -110,14 +114,17 @@ class _SignInViewState extends State<SignInView> {
                             ],
                           ),
                           Spacer(),
-                          Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                              color: const Color(0xFF3F80FF),
-                              fontSize: 12,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                              height: 1.36,
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                color: const Color(0xFF3F80FF),
+                                fontSize: 12.sp,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500,
+                                height: 1.36,
+                              ),
                             ),
                           ),
                         ],
@@ -126,40 +133,86 @@ class _SignInViewState extends State<SignInView> {
                   ),
                 ),
                 SizedBox(height: 10.h),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   height: 44.h,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(14.r),
-                    border: Border.all(color: Colors.blue, width: 2.w),
-                  ),
-                  child: Center(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14.r),
+                        side: BorderSide(color: Colors.blue, width: 2.w),
+                      ),
+                    ),
                     child: Text(
-                      'Sign In',
+                      "Sign In",
                       style: TextStyle(
-                        fontSize: 16.sp,
                         color: Colors.white,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
                   ),
                 ),
+
                 SizedBox(height: 12.h),
                 Center(
                   child: Text(
                     'Or Continue With',
                     style: TextStyle(
                       color: const Color(0xFF51526B) /* navy */,
-                      fontSize: 18.sp,
+                      fontSize: 13.sp,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w400,
                       height: 1.34,
                     ),
                   ),
                 ),
-
                 SizedBox(height: 12.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Material(
+                      clipBehavior: Clip.antiAlias,
+                      shape: CircleBorder(),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Image.asset(
+                          'assets/icons/Google_Icon.png',
+                          width: 60.w,
+                          height: 50.h,
+                        ),
+                      ),
+                    ),
+
+                    Material(
+                      clipBehavior: Clip.antiAlias,
+                      shape: CircleBorder(),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Image.asset(
+                          'assets/icons/Apple_Icon.png',
+                          width: 60.w,
+                          height: 50.h,
+                        ),
+                      ),
+                    ),
+                    Material(
+                      clipBehavior: Clip.antiAlias,
+                      shape: CircleBorder(),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Image.asset(
+                          'assets/icons/Facebok_Icon.png',
+                          width: 60.w,
+                          height: 50.h,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 14.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
 

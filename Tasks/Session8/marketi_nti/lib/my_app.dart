@@ -14,7 +14,7 @@ class MarktiNtiApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/onboarding',
         routes: {
-          '/sign_in': (context) =>  SignInView(),
+          '/sign_in': (context) => SignInView(),
           '/onboarding': (context) => OnBoarding(),
         },
       ),
