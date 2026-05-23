@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainButton extends StatelessWidget {
-  final void Function() ontap;
+  final void Function()? ontap;
   final String text;
-  const MainButton({required this.ontap, required this.text, super.key});
+  const MainButton({this.ontap, required this.text, super.key});
 
   @override
   Widget build(BuildContext context) {
