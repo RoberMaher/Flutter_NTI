@@ -4,6 +4,7 @@ import 'package:marketi_nti/auth/forgot_password.dart';
 import 'package:marketi_nti/auth/sign_in_view.dart';
 import 'package:marketi_nti/auth/sign_up_view.dart';
 import 'package:marketi_nti/home/home_view.dart';
+import 'package:marketi_nti/navigation/bottom_navigation_bar.dart';
 import 'package:marketi_nti/on_boarding/on_boarding.dart';
 
 class MarktiNtiApp extends StatelessWidget {
@@ -21,7 +22,8 @@ class MarktiNtiApp extends StatelessWidget {
           '/onboarding': (context) => OnBoarding(),
           '/sign_up': (context) => SignUpView(),
           '/forgot_password': (context) => ForgotPassword(),
-          '/home': (context) => const home(),
+          '/home': (context) => HomeView(),
+          '/bottom_navigation': (context) => BottomNavBar(),
         },
       ),
     );

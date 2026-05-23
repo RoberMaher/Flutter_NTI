@@ -112,7 +112,9 @@ class _SignUpViewState extends State<SignUpView> {
               isPassword: true,
             ),
             SizedBox(height: 14.h),
-            MainButton(ontap: () {}, text: "Sign Up"),
+            MainButton(ontap: () {
+              Navigator.pushNamed(context, '/bottom_navigation');
+            }, text: "Sign Up"),
             SizedBox(height: 16.h),
             EasyRegistration(),
           ],
