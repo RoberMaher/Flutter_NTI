@@ -48,78 +48,74 @@ class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 14.w),
-          child: SingleChildScrollView(
-            child: Column(
+      body: Padding(
+        padding: EdgeInsets.only(left: 14.w, right: 14.w, top: 30.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 8.h),
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 8.h),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    backButton(),
-                    Expanded(
-                      child: Center(
-                        child: Image.asset(
-                          'assets/images/Logo_Log_In.png',
-                          fit: BoxFit.cover,
-                          width: 187.58627319335938.w,
-                          height: 160.h,
-                        ),
-                      ),
+                backButton(),
+                Expanded(
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/Logo_Log_In.png',
+                      fit: BoxFit.cover,
+                      width: 187.58627319335938.w,
+                      height: 160.h,
                     ),
-                    SizedBox(width: 48.w),
-                  ],
+                  ),
                 ),
-                CustomTextFormField(
-                  label: "Your Name",
-                  hint: "Full Name",
-                  iconPath: 'assets/icons/Name_Icon.png',
-                  controller: nameController,
-                ),
-                CustomTextFormField(
-                  label: "Username",
-                  hint: "Username",
-                  iconPath: 'assets/icons/Username.png',
-                  controller: usernameController,
-                ),
-                CustomTextFormField(
-                  label: "Phone Number",
-                  hint: "+20 123456789",
-                  iconPath: 'assets/icons/Phone.png',
-                  controller: phoneController,
-                ),
-                CustomTextFormField(
-                  label: "Email Address",
-                  hint: "You@gmail.com",
-                  iconPath: 'assets/icons/evaEmailOutline2.png',
-                  controller: emailController,
-                  isEmail: true,
-                ),
-                CustomTextFormField(
-                  label: "Password",
-                  hint: "**********",
-                  iconPath: 'assets/icons/Password_Icon.png',
-                  controller: passwordController,
-                  isPassword: true,
-                ),
-
-                CustomTextFormField(
-                  label: "Confirm Password",
-                  hint: "**********",
-                  iconPath: 'assets/icons/Password_Icon.png',
-                  controller: confirmPasswordController,
-                  isPassword: true,
-                ),
-                SizedBox(height: 14.h),
-                MainButton(ontap: () {}, text: "Sign Up"),
-                SizedBox(height: 12.h),
-                EasyRegistration(),
+                SizedBox(width: 48.w),
               ],
             ),
-          ),
+            CustomTextFormField(
+              label: "Your Name",
+              hint: "Full Name",
+              iconPath: 'assets/icons/Name_Icon.png',
+              controller: nameController,
+            ),
+            CustomTextFormField(
+              label: "Username",
+              hint: "Username",
+              iconPath: 'assets/icons/Username.png',
+              controller: usernameController,
+            ),
+            CustomTextFormField(
+              label: "Phone Number",
+              hint: "+20 123456789",
+              iconPath: 'assets/icons/Phone.png',
+              controller: phoneController,
+            ),
+            CustomTextFormField(
+              label: "Email Address",
+              hint: "You@gmail.com",
+              iconPath: 'assets/icons/evaEmailOutline2.png',
+              controller: emailController,
+              isEmail: true,
+            ),
+            CustomTextFormField(
+              label: "Password",
+              hint: "**********",
+              iconPath: 'assets/icons/Password_Icon.png',
+              controller: passwordController,
+              isPassword: true,
+            ),
+
+            CustomTextFormField(
+              label: "Confirm Password",
+              hint: "**********",
+              iconPath: 'assets/icons/Password_Icon.png',
+              controller: confirmPasswordController,
+              isPassword: true,
+            ),
+            SizedBox(height: 14.h),
+            MainButton(ontap: () {}, text: "Sign Up"),
+            SizedBox(height: 16.h),
+            EasyRegistration(),
+          ],
         ),
       ),
     );

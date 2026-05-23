@@ -32,107 +32,110 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (widget.label != null) ...[
-          Text(
-            widget.label!,
-            style: TextStyle(
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w500,
-              color: Color(0XFF001640),
-              fontFamily: 'Poppins',
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 2.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (widget.label != null) ...[
+            Text(
+              widget.label!,
+              style: TextStyle(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w500,
+                color: Color(0XFF001640),
+                fontFamily: 'Poppins',
+              ),
             ),
-          ),
-          SizedBox(height: 0.5.h),
-        ],
+            SizedBox(height: 0.5.h),
+          ],
 
-        TextFormField(
-          controller: widget.controller,
-          obscureText: widget.isPassword ? obscureText : false,
-          style: const TextStyle(color: Colors.black),
+          TextFormField(
+            controller: widget.controller,
+            obscureText: widget.isPassword ? obscureText : false,
+            style: const TextStyle(color: Colors.black),
 
-          keyboardType: widget.isPhone
-              ? TextInputType.phone
-              : widget.isEmail
-              ? TextInputType.emailAddress
-              : TextInputType.text,
+            keyboardType: widget.isPhone
+                ? TextInputType.phone
+                : widget.isEmail
+                ? TextInputType.emailAddress
+                : TextInputType.text,
 
-          validator:
-              widget.validator ??
-              (value) {
-                if (value == null || value.isEmpty) {
-                  return "${widget.hint} can't be empty";
-                }
-
-                if (widget.isEmail) {
-                  final emailRegex = RegExp(r'@');
-                  if (!emailRegex.hasMatch(value)) {
-                    return "Invalid email";
+            validator:
+                widget.validator ??
+                (value) {
+                  if (value == null || value.isEmpty) {
+                    return "${widget.hint} can't be empty";
                   }
-                }
 
-                if (widget.isPassword && value.length < 6) {
-                  return "Password must be at least 6 characters";
-                }
+                  if (widget.isEmail) {
+                    final emailRegex = RegExp(r'@');
+                    if (!emailRegex.hasMatch(value)) {
+                      return "Invalid email";
+                    }
+                  }
 
-                return null;
-              },
+                  if (widget.isPassword && value.length < 6) {
+                    return "Password must be at least 6 characters";
+                  }
 
-          decoration: InputDecoration(
-            hintText: widget.hint,
-            hintStyle: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              fontFamily: 'Poppins',
-              height: 1.34,
-              color: Color(0xFF929BAB),
-            ),
+                  return null;
+                },
 
-            prefixIcon: Padding(
-              padding: EdgeInsets.all(12.w),
-              child: Image.asset(widget.iconPath, width: 20.w, height: 20.h),
-            ),
-
-            suffixIcon: widget.isPassword
-                ? IconButton(
-                    icon: Icon(
-                      obscureText ? Icons.visibility_off : Icons.visibility,
-                      color: const Color.fromARGB(255, 0, 22, 64),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        obscureText = !obscureText;
-                      });
-                    },
-                  )
-                : null,
-
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: const Color(0xFF8CB3FF),
-                width: 2.w,
+            decoration: InputDecoration(
+              hintText: widget.hint,
+              hintStyle: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: 'Poppins',
+                height: 1.34,
+                color: Color(0xFF929BAB),
               ),
-              borderRadius: BorderRadius.circular(14.r),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: const Color(0xFF8CB3FF).withAlpha(100),
-                width: 2.w,
+
+              prefixIcon: Padding(
+                padding: EdgeInsets.all(12.w),
+                child: Image.asset(widget.iconPath, width: 20.w, height: 20.h),
               ),
-              borderRadius: BorderRadius.circular(14.r),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: const Color(0xFF8CB3FF),
-                width: 2.w,
+
+              suffixIcon: widget.isPassword
+                  ? IconButton(
+                      icon: Icon(
+                        obscureText ? Icons.visibility_off : Icons.visibility,
+                        color: const Color.fromARGB(255, 0, 22, 64),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                    )
+                  : null,
+
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: const Color(0xFF8CB3FF),
+                  width: 2.w,
+                ),
+                borderRadius: BorderRadius.circular(14.r),
               ),
-              borderRadius: BorderRadius.circular(14.r),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: const Color(0xFF8CB3FF).withAlpha(100),
+                  width: 2.w,
+                ),
+                borderRadius: BorderRadius.circular(14.r),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: const Color(0xFF8CB3FF),
+                  width: 2.w,
+                ),
+                borderRadius: BorderRadius.circular(14.r),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
