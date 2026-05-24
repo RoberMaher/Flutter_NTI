@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/home/widgets/search_bar.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  final List<String> items = [
+    "assets/images/Offer_1.png",
+    "assets/images/Offer_1.png",
+    "assets/images/Offer_1.png",
+  ];
+
+  HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,24 +48,33 @@ class HomeView extends StatelessWidget {
           ),
         ],
       ),
-      body: const Column(
+      body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: TextField(
-              decoration: InputDecoration(
-                // prefixIcon: Padding(
-                //   padding: const EdgeInsets.all(10.0),
-                //   child: Image.asset(
-                //     'assets/icons/Search_Icons_UIA.png',
-                //     width: 20,
-                //     height: 20,
-                //   ),
-                // ),
-                hintText: 'Search',
-                border: OutlineInputBorder(),
-              ),
+          CustomSearchBar(),
+          CarouselSlider(
+            options: CarouselOptions(
+              height: 180.h,
+              autoPlay: true,
+              enlargeCenterPage: true,
+              viewportFraction: 0.9,
             ),
+            items: items.map((imagePath) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 6),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: AssetImage(imagePath),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
+              );
+            }).toList(),
           ),
         ],
       ),

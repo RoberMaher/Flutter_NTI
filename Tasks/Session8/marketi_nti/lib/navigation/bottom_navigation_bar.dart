@@ -3,7 +3,7 @@ import 'package:marketi_nti/home/home_view.dart';
 class BottomNavBar extends StatefulWidget {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
+  final List<Widget> _pages = [
     HomeView(),
     Center(child: Text('Cart')),
     Center(child: Text('Favorite')),
