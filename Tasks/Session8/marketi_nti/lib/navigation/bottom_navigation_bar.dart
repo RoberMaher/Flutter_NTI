@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:marketi_nti/cart/cart_view.dart';
 import 'package:marketi_nti/home/home_view.dart';
 class BottomNavBar extends StatefulWidget {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
     HomeView(),
-    Center(child: Text('Cart')),
+    CartView(),
     Center(child: Text('Favorite')),
     Center(child: Text('Profile')),
   ];
