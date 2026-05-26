@@ -14,14 +14,14 @@ class CustomSearchBar extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14.r),
             borderSide: BorderSide(
-              color: Color(0xFF8CB3FF).withOpacity(0.7),
+              color: AppColors.light_blue_500.withOpacity(0.7),
               width: 2.w,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14.r),
             borderSide: BorderSide(
-              color: Color(0xFF8CB3FF).withOpacity(0.7),
+              color: AppColors.light_blue_500.withOpacity(0.7),
               width: 2.w,
             ),
           ),
@@ -43,7 +43,7 @@ class CustomSearchBar extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color(0xFF8CB3FF).withOpacity(0.7),
+                      color: AppColors.light_blue_500.withOpacity(0.7),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(8.r),

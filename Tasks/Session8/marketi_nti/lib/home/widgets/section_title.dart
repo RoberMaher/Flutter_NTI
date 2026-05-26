@@ -33,7 +33,7 @@ class SectionTitle extends StatelessWidget {
             child: Text(
               "View all",
               style: TextStyle(
-                color: const Color(0xFF3F80FF),
+                color: const AppColors.light_blue_100,
                 fontSize: 16.sp,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w500,

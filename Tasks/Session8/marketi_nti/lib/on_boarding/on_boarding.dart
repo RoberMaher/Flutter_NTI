@@ -68,8 +68,8 @@ class _OnBoardingState extends State<OnBoarding> {
           },
           // dotsDecorator: const DotsDecorator(
           //   size: Size(10, 10),
-          //   color: Color(0xFF8CB3FF),
-          //   activeColor: Color(0xFF3F80FF),
+          //   color: AppColors.light_blue_500,
+          //   activeColor: AppColors.light_blue_100,
           //   activeSize: Size(22, 10),
           //   activeShape: RoundedRectangleBorder(
           //     borderRadius: BorderRadius.all(Radius.circular(24)),

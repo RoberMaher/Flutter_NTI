@@ -18,7 +18,7 @@ class textButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          color: const Color(0xFF3F80FF),
+          color: const AppColors.light_blue_100,
           fontSize: 12.sp,
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w500,

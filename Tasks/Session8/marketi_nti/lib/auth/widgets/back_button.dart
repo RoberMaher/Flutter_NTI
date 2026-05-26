@@ -11,7 +11,7 @@ class backButton extends StatelessWidget {
       height: 48.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40.r),
-        border: Border.all(color: Color(0xFF8CB3FF), width: 1),
+        border: Border.all(color: AppColors.light_blue_500, width: 1),
       ),
       child: MaterialButton(
         clipBehavior: Clip.antiAlias,

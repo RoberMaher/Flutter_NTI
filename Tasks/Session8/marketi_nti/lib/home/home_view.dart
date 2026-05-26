@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/core/app_color.dart';
 import 'package:marketi_nti/home/widgets/brand_item.dart';
 import 'package:marketi_nti/home/widgets/category_item.dart';
 import 'package:marketi_nti/home/widgets/scrolled_offers.dart';
@@ -33,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
               height: 48.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Color(0xFF8CB3FF), width: 4),
+                border: Border.all(color: AppColors.light_blue_500, width: 4),
               ),
               child: CircleAvatar(
                 radius: 20,

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marketi_nti/cart/widgets/product_card.dart';
+import 'package:marketi_nti/core/app_color.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -23,7 +24,7 @@ class CartView extends StatelessWidget {
               height: 48.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Color(0xFF8CB3FF), width: 4),
+                border: Border.all(color: AppColors.light_blue_500, width: 4),
               ),
               child: CircleAvatar(
                 radius: 20,
@@ -112,9 +113,7 @@ class CartView extends StatelessWidget {
                   ),
                   itemCount: data['products'].length,
                   itemBuilder: (context, index) => Column(
-                    children: [
-                      ProductCard(item: data['products'][index]),
-                    ],
+                    children: [ProductCard(item: data['products'][index])],
                   ),
                 );
               } else if (snapshot.hasError) {
