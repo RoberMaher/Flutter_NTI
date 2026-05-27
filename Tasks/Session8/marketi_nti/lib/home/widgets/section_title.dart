@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/core/app_color.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
-  const SectionTitle({
-    required this.title,
-    super.key,
-  });
+  const SectionTitle({required this.title, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +19,8 @@ class SectionTitle extends StatelessWidget {
               fontSize: 20.sp,
               fontWeight: FontWeight.w600,
             ),
+
             // Spacer(),
-          
           ),
         ),
         Spacer(),
@@ -33,14 +31,14 @@ class SectionTitle extends StatelessWidget {
             child: Text(
               "View all",
               style: TextStyle(
-                color: const AppColors.light_blue_100,
+                color: AppColors.light_blue_100,
                 fontSize: 16.sp,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w500,
                 height: 1.36,
               ),
             ),
-          )
+          ),
         ),
       ],
     );

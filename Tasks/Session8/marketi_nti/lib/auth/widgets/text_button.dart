@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/core/app_color.dart';
 
 class textButton extends StatelessWidget {
   final String text;
@@ -18,7 +19,7 @@ class textButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          color: const AppColors.light_blue_100,
+          color: AppColors.light_blue_100,
           fontSize: 12.sp,
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w500,

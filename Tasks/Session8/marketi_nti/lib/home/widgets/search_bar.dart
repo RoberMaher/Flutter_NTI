@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/core/app_color.dart';
 
 class CustomSearchBar extends StatelessWidget {
   const CustomSearchBar({super.key});

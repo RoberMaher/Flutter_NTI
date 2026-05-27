@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/core/app_color.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final String? label;
@@ -113,21 +114,21 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
               border: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: const AppColors.light_blue_500,
+                  color:  AppColors.light_blue_500,
                   width: 2.w,
                 ),
                 borderRadius: BorderRadius.circular(14.r),
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: const AppColors.light_blue_500.withAlpha(100),
+                  color:  AppColors.light_blue_500.withAlpha(100),
                   width: 2.w,
                 ),
                 borderRadius: BorderRadius.circular(14.r),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: const AppColors.light_blue_500,
+                  color: AppColors.light_blue_500,
                   width: 2.w,
                 ),
                 borderRadius: BorderRadius.circular(14.r),
