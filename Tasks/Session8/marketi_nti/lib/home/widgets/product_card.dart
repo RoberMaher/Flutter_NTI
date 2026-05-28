@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/core/app_color.dart';
 import 'package:marketi_nti/home/widgets/product_model.dart';
 
 class ProductCard extends StatelessWidget {
@@ -68,7 +69,7 @@ class ProductCard extends StatelessWidget {
                           product.isFav
                               ? Icons.favorite
                               : Icons.favorite_border,
-                          color: Color(0xFF001640),
+                          color: AppColors.dark_blue_900,
                           size: 16.sp,
                           fontWeight: FontWeight.w700,
                         ),
@@ -84,7 +85,7 @@ class ProductCard extends StatelessWidget {
                   Text(
                     "${product.price} LE",
                     style: TextStyle(
-                      color: Color(0xFF001640),
+                      color: AppColors.dark_blue_900,
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
                     ),
@@ -96,7 +97,7 @@ class ProductCard extends StatelessWidget {
                     },
                     child: Icon(
                       product.isStar ? Icons.star : Icons.star_border,
-                      color: Color(0xFF001640),
+                      color: AppColors.dark_blue_900,
                       size: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -107,7 +108,7 @@ class ProductCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF001640),
+                      color: AppColors.dark_blue_900,
                     ),
                   ),
                   SizedBox(width: 4.w),
@@ -118,7 +119,7 @@ class ProductCard extends StatelessWidget {
                 child: Text(
                   product.name,
                   style: TextStyle(
-                    color: Color(0xFF001640),
+                    color: AppColors.dark_blue_900,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w500,
                   ),

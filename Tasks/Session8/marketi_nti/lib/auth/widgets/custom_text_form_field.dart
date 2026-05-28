@@ -44,7 +44,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               style: TextStyle(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
-                color: Color(0XFF001640),
+                color: AppColors.dark_blue_900,
                 fontFamily: 'Poppins',
               ),
             ),
@@ -114,14 +114,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
               border: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color:  AppColors.light_blue_500,
+                  color: AppColors.light_blue_500,
                   width: 2.w,
                 ),
                 borderRadius: BorderRadius.circular(14.r),
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color:  AppColors.light_blue_500.withAlpha(100),
+                  color: AppColors.light_blue_500.withAlpha(100),
                   width: 2.w,
                 ),
                 borderRadius: BorderRadius.circular(14.r),

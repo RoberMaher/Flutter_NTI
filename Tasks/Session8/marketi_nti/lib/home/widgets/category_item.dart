@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/core/app_color.dart';
 
 class CategoryItem extends StatelessWidget {
   final String title;
@@ -29,7 +30,7 @@ class CategoryItem extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 16.sp,
-            color: Color(0xFF001640),
+            color: AppColors.dark_blue_900,
             fontWeight: FontWeight.w500,
           ),
         ),
