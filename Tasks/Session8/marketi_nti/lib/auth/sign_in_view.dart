@@ -1,5 +1,8 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: unused_local_variable, must_be_immutable
 
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marketi_nti/auth/widgets/custom_text_form_field.dart';
@@ -135,7 +138,9 @@ class _SignInViewState extends State<SignInView> {
                   MainButton(
                     ontap: () {
                       if (formKey.currentState!.validate()) {
-                        Navigator.pushNamed(context, '/home');
+                        // Navigator.pushNamed(context, '/home');
+                        //post request that sends the email and password
+                        login();
                       }
                     },
                     text: 'Sign In',
@@ -172,6 +177,25 @@ class _SignInViewState extends State<SignInView> {
       ),
     );
   }
+
+  login() async {
+    try {
+      Response response = await Dio().post(
+        'https://accessories-eshop.runasp.net/api/auth/login',
+        data: {
+          'email': emailController.text.toString(),
+          'password': passwordController.text.toString(),
+        },
+      );
+      log(response.data['accessToken']);
+      log(response.statusCode.toString());
+
+      if (response.statusCode == 200) {
+        if (!mounted) return;
+        Navigator.pushNamed(context, '/bottom_navigation');
+      }
+    } on DioException catch (e) {
+      log(e.toString());
+    }
+  }
 }
-
-
