@@ -66,7 +66,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 widget.validator ??
                 (value) {
                   if (value == null || value.isEmpty) {
-                    return "${widget.hint} can't be empty";
+                    return "${widget.label} can't be empty";
                   }
 
                   if (widget.isEmail) {
