@@ -162,7 +162,4 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-GetAllProducts() async {
-  final dio = Dio();
-  final response = await dio.get('https://dummyjson.com/products');
-}
+

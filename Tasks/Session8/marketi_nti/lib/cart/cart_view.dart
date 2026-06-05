@@ -51,49 +51,6 @@ class CartView extends StatelessWidget {
         ],
       ),
 
-      // body: Column(
-      //   children: [
-      //     Padding(
-      //       padding: const EdgeInsets.all(14),
-      //       child: TextField(
-      //         decoration: InputDecoration(
-      //           hintText: 'What are you looking for ? ',
-      //           hintStyle: TextStyle(
-      //             fontSize: 18.sp,
-      //             color: Colors.grey,
-      //             fontWeight: FontWeight.w400,
-      //           ),
-      //           prefixIcon: Image.asset(
-      //             'assets/images/icons/Search_Icons_UIA.png',
-      //             width: 24.w,
-      //             height: 24.h,
-      //           ),
-
-      //           suffix: Container(
-      //             width: 30.w,
-      //             height: 30.h,
-      //             decoration: BoxDecoration(
-      //               border: Border.all(color: AppColors.darkBlue100.withAlpha(10), width: 2),
-      //               borderRadius: BorderRadius.circular(6.r),
-      //             ),
-      //             child: Image.asset(
-      //               'assets/images/icons/Filter_Icon.png',
-      //               width: 10.w,
-      //               height: 10.h,
-      //             ),
-      //           ),
-      //           border: OutlineInputBorder(
-      //             borderRadius: BorderRadius.circular(14.r),
-      //             borderSide: BorderSide(color: AppColors.lightBlue100, width: 2),
-      //           ),
-      //           contentPadding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
-      //         ),
-      //       ),
-      //     ),
-
-      //     // get all products
-      //   ],
-      // ),
       body: FutureBuilder(
         future: getAllProducts(),
         builder: (context, snapshot) {
@@ -131,11 +88,5 @@ class CartView extends StatelessWidget {
     );
 
     // get all products function
-  }
-
-  getAllProducts() async {
-    final dio = Dio();
-    Response response = await dio.get('https://dummyjson.com/products');
-    return response.data;
   }
 }
