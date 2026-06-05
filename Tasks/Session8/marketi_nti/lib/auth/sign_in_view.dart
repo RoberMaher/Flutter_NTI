@@ -2,14 +2,17 @@
 
 import 'dart:developer';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/auth/models/error_model.dart';
 import 'package:marketi_nti/auth/widgets/custom_text_form_field.dart';
 import 'package:marketi_nti/auth/widgets/easy_registration.dart';
 import 'package:marketi_nti/auth/widgets/main_button.dart';
 import 'package:marketi_nti/auth/widgets/text_button.dart';
 import 'package:marketi_nti/auth/widgets/skip_button.dart';
+import 'package:marketi_nti/core/networking/api_consumer.dart';
 
 class SignInView extends StatefulWidget {
   bool value = false;
@@ -138,9 +141,15 @@ class _SignInViewState extends State<SignInView> {
                   MainButton(
                     ontap: () {
                       if (formKey.currentState!.validate()) {
-                        // Navigator.pushNamed(context, '/home');
-                        //post request that sends the email and password
-                        login();
+                        ApiConsumer().post(
+                          url:
+                              'https://marketi-nti.onrender.com/api/v1/auth/login',
+                          context: context,
+                          data: {
+                            'email': emailController.text,
+                            'password': passwordController.text,
+                          },
+                        );
                       }
                     },
                     text: 'Sign In',
@@ -176,26 +185,5 @@ class _SignInViewState extends State<SignInView> {
         ),
       ),
     );
-  }
-
-  login() async {
-    try {
-      Response response = await Dio().post(
-        'https://accessories-eshop.runasp.net/api/auth/login',
-        data: {
-          'email': emailController.text.toString(),
-          'password': passwordController.text.toString(),
-        },
-      );
-      log(response.data['accessToken']);
-      log(response.statusCode.toString());
-
-      if (response.statusCode == 200) {
-        if (!mounted) return;
-        Navigator.pushNamed(context, '/bottom_navigation');
-      }
-    } on DioException catch (e) {
-      log(e.toString());
-    }
   }
 }
