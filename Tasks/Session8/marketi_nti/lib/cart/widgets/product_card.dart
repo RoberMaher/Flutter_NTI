@@ -1,50 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/cart/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.item});
-
-  final dynamic item;
+  const ProductCard({
+    super.key,
+    required this.index,
+    required this.productModel,
+  });
+  final int index;
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 145.h,
-          width: double.infinity,
-          child: Card(
-            clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 100.h,
-                  width: double.infinity,
-                  child: Image.network(item['thumbnail'], fit: BoxFit.contain),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      item['title'],
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ),
-              ],
+    return Card(
+      shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(14.r)),
+      child: Column(
+        children: [
+          Image.network(productModel.thumbnail!),
+          Text(
+            productModel.title!,
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Center(child: Text('\$${item['price']}')),
-        ),
-      ],
+          Text(productModel.price == null ? '' : productModel.price.toString()),
+        ],
+      ),
     );
   }
 }
+
+
+
+//  api methods
+//
+/// get all products
+/// //  
