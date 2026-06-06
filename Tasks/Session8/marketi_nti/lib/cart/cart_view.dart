@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marketi_nti/cart/cubit/products_cubit.dart';
 import 'package:marketi_nti/cart/widgets/product_card.dart';
 import 'package:marketi_nti/core/app_color.dart';
 
@@ -51,42 +53,31 @@ class CartView extends StatelessWidget {
         ],
       ),
 
-      body: FutureBuilder(
-        future: getAllProducts(),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return Center(child: CircularProgressIndicator());
-
-            case ConnectionState.done:
-              if (snapshot.hasData && snapshot.data != null) {
-                final data = snapshot.data as Map<String, dynamic>;
-
-                return GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  ),
-                  itemCount: data['products'].length,
-                  itemBuilder: (context, index) => Column(
-                    children: [ProductCard(item: data['products'][index])],
-                  ),
+      body: BlocBuilder<ProductsCubit, ProductsState>(
+        builder: (context, state) {
+          if (state is ProductsLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is ProductsSuccess) {
+            return GridView.builder(
+              itemCount: state.products.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.8,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return ProductCard(
+                  index: index,
+                  productModel: state.products[index],
                 );
-              } else if (snapshot.hasError) {
-                return Center(child: Text('Error ${snapshot.error}'));
-              } else {
-                return const Center(child: Text('No data'));
-              }
-
-            case ConnectionState.none:
-              return Center(child: Text('No connection'));
-
-            case ConnectionState.active:
-              return Center(child: Text('Active connection'));
+              },
+            );
+          } else if (state is ProductsFailure) {
+            return Center(child: Text(state.errorMessage));
+          } else {
+            return const SizedBox();
           }
         },
       ),
     );
-
-    // get all products function
   }
 }

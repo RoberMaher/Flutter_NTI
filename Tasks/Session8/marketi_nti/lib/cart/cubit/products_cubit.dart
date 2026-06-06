@@ -15,7 +15,7 @@ class ProductsCubit extends Cubit<ProductsState> {
       final response = await dio.get('https://dummyjson.com/products');
       Map<String, dynamic> productsData = response.data as Map<String, dynamic>;
       List<ProductModel> productsList = productsData['products']
-          .map((product) => ProductModel.fromJson(product))
+          .map<ProductModel>((product) => ProductModel.fromJson(product))
           .toList();
       emit(ProductsSuccess(productsList));
     } on DioException catch (e) {
