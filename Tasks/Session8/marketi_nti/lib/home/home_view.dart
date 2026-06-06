@@ -1,7 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:marketi_nti/core/app_color.dart';
 import 'package:marketi_nti/home/widgets/brand_item.dart';
 import 'package:marketi_nti/home/widgets/category_item.dart';
 import 'package:marketi_nti/home/widgets/scrolled_offers.dart';
@@ -9,6 +7,7 @@ import 'package:marketi_nti/home/widgets/scrolled_products.dart';
 import 'package:marketi_nti/home/widgets/search_bar.dart';
 import 'package:marketi_nti/home/widgets/section_title.dart';
 import 'package:marketi_nti/home/home_data.dart';
+import 'package:marketi_nti/shared/costom_app_bar.dart';
 
 class HomeView extends StatefulWidget {
   final HomeData homeData = HomeData();
@@ -23,45 +22,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leadingWidth: 200,
-        leading: Row(
-          children: [
-            SizedBox(width: 20),
-            Container(
-              width: 48.w,
-              height: 48.h,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: AppColors.light_blue_500, width: 4),
-              ),
-              child: CircleAvatar(
-                radius: 20,
-                // backgroundImage: AssetImage(''),
-              ),
-            ),
-            SizedBox(width: 10.w),
-            Text(
-              'Hi, Rober',
-              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 14.0),
-            child: IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                'assets/icons/Bell_Icon_UIA.png',
-                width: 24.w,
-                height: 24.h,
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: costomAppBar(),
       body: Column(
         children: [
           CustomSearchBar(),
