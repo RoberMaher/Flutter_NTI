@@ -27,10 +27,7 @@ class MarktiNtiApp extends StatelessWidget {
           '/forgot_password': (context) => ForgotPassword(),
           '/home': (context) => HomeView(),
           '/bottom_navigation': (context) => BottomNavBar(),
-          '/cart': (context) => BlocProvider(
-            create: (context) => ProductsCubit()..GetAllProducts(),
-            child: const CartView(),
-          ),
+          '/cart': (context) => CartView(),
         },
       ),
     );
