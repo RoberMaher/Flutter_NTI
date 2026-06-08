@@ -13,6 +13,7 @@ import 'package:marketi_nti/auth/widgets/main_button.dart';
 import 'package:marketi_nti/auth/widgets/text_button.dart';
 import 'package:marketi_nti/auth/widgets/skip_button.dart';
 import 'package:marketi_nti/core/networking/api_consumer.dart';
+import 'package:marketi_nti/core/networking/handle_error.dart';
 
 class SignInView extends StatefulWidget {
   bool value = false;
@@ -139,17 +140,27 @@ class _SignInViewState extends State<SignInView> {
                   ),
                   SizedBox(height: 10.h),
                   MainButton(
-                    ontap: () {
+                    ontap: () async {
                       if (formKey.currentState!.validate()) {
-                        ApiConsumer().post(
-                          url:
-                              'https://accessories-eshop.runasp.net/api/auth/login',
-                          context: context,
-                          data: {
-                            'email': emailController.text,
-                            'password': passwordController.text,
-                          },
-                        );
+                        try {
+                          var response = await ApiConsumer().post(
+                            url:
+                                'https://accessories-eshop.runasp.net/api/auth/login',
+                            context: context,
+                            data: {
+                              'email': emailController.text,
+                              'password': passwordController.text,
+                            },
+                          );
+
+                          if (response?.statusCode == 200) {
+                            Navigator.pushReplacementNamed(context, '/bottom_navigation');
+                          }
+                        } on DioException catch (e) {
+                          HandleError(e, context); // يعرض ال dialog بتاعك
+                        } catch (e) {
+                          log(e.toString());
+                        }
                       }
                     },
                     text: 'Sign In',

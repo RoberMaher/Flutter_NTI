@@ -6,19 +6,32 @@ HandleError(DioException e, BuildContext context) {
   switch (e.response!.statusCode) {
     case 400:
       String errorMessage = '';
-      e.response!.data['errors'].forEach((error) => errorMessage += '$error\n');
-      // if (!mounted) return;
+
+      final errors = e.response!.data['errors'];
+
+      if (errors is Map) {
+        errors.forEach((key, value) {
+          for (var err in value) {
+            errorMessage += '$err\n';
+          }
+        });
+      } else if (errors is List) {
+        for (var err in errors) {
+          errorMessage += '$err\n';
+        }
+      }
+
       AwesomeDialog(
         context: context,
         dialogType: DialogType.error,
         animType: AnimType.scale,
         title: '${e.response!.data['message']}',
-        desc: '${errorMessage.trim()}',
+        desc: errorMessage.trim(),
         btnOkOnPress: () {},
       ).show();
       break;
+
     default:
-      // if (!mounted) return;
       AwesomeDialog(
         context: context,
         dialogType: DialogType.error,
