@@ -19,7 +19,7 @@ class MarktiNtiApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/cart',
+        initialRoute: '/sign_in',
         routes: {
           '/sign_in': (context) => SignInView(),
           '/onboarding': (context) => OnBoarding(),

@@ -1,26 +1,26 @@
-import 'dart:developer';
-
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:marketi_nti/auth/models/error_model.dart';
 import 'package:marketi_nti/core/networking/handle_error.dart';
 
 class ApiConsumer {
   Dio dio = Dio();
 
-  Future<void> post({
+  Future<Response?> post({
     Map<String, dynamic>? queryParameters,
     required BuildContext context,
-
     required String url,
-
     required Map<String, dynamic> data,
   }) async {
     try {
-      await dio.post(url, data: data, queryParameters: queryParameters);
+      Response response = await dio.post(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+      );
+      return response;
     } on DioException catch (e) {
       HandleError(e, context);
+      return null;
     }
   }
 
