@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marketi_nti/auth/sign_in_cubit/sign_in_cubit.dart';
-import 'package:marketi_nti/auth/sign_up_view.dart';
 import 'package:marketi_nti/auth/widgets/custom_text_form_field.dart';
 import 'package:marketi_nti/auth/widgets/easy_registration.dart';
 import 'package:marketi_nti/auth/widgets/main_button.dart';
