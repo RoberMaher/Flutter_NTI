@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marketi_nti/auth/sign_in_cubit/sign_in_cubit.dart';
+import 'package:marketi_nti/auth/sign_up_view.dart';
 import 'package:marketi_nti/auth/widgets/custom_text_form_field.dart';
+import 'package:marketi_nti/auth/widgets/easy_registration.dart';
 import 'package:marketi_nti/auth/widgets/main_button.dart';
 import 'package:marketi_nti/auth/widgets/skip_button.dart';
 import 'package:marketi_nti/auth/widgets/text_button.dart';
+import 'package:marketi_nti/core/app_color.dart';
 import 'package:marketi_nti/core/networking/api_consumer.dart';
 
 class SignInView extends StatefulWidget {
@@ -165,6 +168,41 @@ class _SignInViewState extends State<SignInView> {
                           }
                         },
                         text: "Sign In",
+                      ),
+                      SizedBox(height: 12.h),
+
+                      EasyRegistration(),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+
+                        children: [
+                          Text(
+                            'Don\'t have an account?',
+                            style: TextStyle(
+                              color: const Color(0xFF51526B) /* navy */,
+                              fontSize: 12.sp,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                              height: 1.34,
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/sign_up');
+                            },
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                color: AppColors.light_blue_100,
+                                fontSize: 12.sp,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500,
+                                height: 1.36,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
