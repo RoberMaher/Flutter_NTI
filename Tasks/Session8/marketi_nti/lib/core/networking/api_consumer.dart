@@ -7,17 +7,11 @@ class ApiConsumer {
     // dio.options.baseUrl = 'https://accessories-eshop.runasp.net/api';
   }
 
-  Future<void> post({
-    // Map<String, dynamic>? queryParameters,
+  Future<Response> post({
     required String url,
-
     required Map<String, dynamic> data,
   }) async {
-    await dio.post(
-      url,
-      data: data,
-      // queryParameters: queryParameters,
-    );
+    return await Dio().post(url, data: data);
   }
 
   Future<Response> get(
