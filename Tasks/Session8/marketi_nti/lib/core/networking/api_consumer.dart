@@ -1,27 +1,23 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:marketi_nti/core/networking/handle_error.dart';
 
 class ApiConsumer {
   Dio dio = Dio();
 
-  Future<Response?> post({
-    Map<String, dynamic>? queryParameters,
-    required BuildContext context,
+  ApiConsumer() {
+    // dio.options.baseUrl = 'https://accessories-eshop.runasp.net/api';
+  }
+
+  Future<void> post({
+    // Map<String, dynamic>? queryParameters,
     required String url,
+
     required Map<String, dynamic> data,
   }) async {
-    try {
-      Response response = await dio.post(
-        url,
-        data: data,
-        queryParameters: queryParameters,
-      );
-      return response;
-    } on DioException catch (e) {
-      HandleError(e, context);
-      return null;
-    }
+    await dio.post(
+      url,
+      data: data,
+      // queryParameters: queryParameters,
+    );
   }
 
   Future<Response> get(
