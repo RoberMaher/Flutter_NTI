@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketi_nti/cart/cart_view.dart';
 import 'package:marketi_nti/home/home_view.dart';
+// ignore: must_be_immutable
 class BottomNavBar extends StatefulWidget {
   int _currentIndex = 0;
 
