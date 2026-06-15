@@ -6,6 +6,8 @@ import 'package:marketi_nti/auth/forgot_password.dart';
 import 'package:marketi_nti/auth/sign_in_view.dart';
 import 'package:marketi_nti/auth/sign_up_cubit/sign_up_cubit.dart';
 import 'package:marketi_nti/auth/sign_up_view.dart';
+import 'package:marketi_nti/auth/verification_cubit/verification_cubit.dart';
+import 'package:marketi_nti/auth/verification_view.dart';
 import 'package:marketi_nti/cart/cart_view.dart';
 import 'package:marketi_nti/core/networking/api_consumer.dart';
 import 'package:marketi_nti/home/home_view.dart';
@@ -21,7 +23,7 @@ class MarktiNtiApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/sign_in',
+        initialRoute: '/onboarding',
         routes: {
           '/sign_in': (context) => BlocProvider(
             create: (context) => SignInCubit(apiConsumer: ApiConsumer()),
@@ -36,6 +38,17 @@ class MarktiNtiApp extends StatelessWidget {
           '/home': (context) => HomeView(),
           '/bottom_navigation': (context) => BottomNavBar(),
           '/cart': (context) => CartView(),
+          '/verification': (context) {
+            final args = ModalRoute.of(context)?.settings.arguments;
+
+            final email = (args is String) ? args : '';
+
+            return BlocProvider(
+              create: (context) =>
+                  VerificationCubit(apiConsumer: ApiConsumer()),
+              child: VerificationView(email: email),
+            );
+          },
         },
       ),
     );
