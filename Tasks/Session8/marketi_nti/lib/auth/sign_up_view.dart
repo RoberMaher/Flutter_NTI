@@ -40,6 +40,7 @@ class _SignUpViewState extends State<SignUpView> {
   }
 
   @override
+
   Widget build(BuildContext context) {
     return BlocListener<SignUpCubit, SignUpState>(
       listener: (context, state) {
@@ -53,10 +54,10 @@ class _SignUpViewState extends State<SignUpView> {
             title: 'Success',
             desc: 'Registration Successful!',
             btnOkOnPress: () {
-              Navigator.pushNamedAndRemoveUntil(
+              Navigator.pushNamed(
                 context,
-                '/bottom_navigation',
-                (route) => false,
+                '/verification',
+                arguments: emailController.text.trim(),
               );
             },
           ).show();
