@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:marketi_nti/auth/sign_in_view.dart';
 import 'package:marketi_nti/core/app_color.dart';
 
 class CustomPageView extends StatefulWidget {
@@ -17,10 +16,9 @@ class _CustomPageViewState extends State<CustomPageView> {
   int _currentPage = 0;
   final int _totalPages = 3;
 
+
   void _onIntroEnd(BuildContext context) {
-    Navigator.of(
-      context,
-    ).pushReplacement(MaterialPageRoute(builder: (_) => SignInView()));
+    Navigator.of(context).pushReplacementNamed('/sign_in');
   }
 
   @override
