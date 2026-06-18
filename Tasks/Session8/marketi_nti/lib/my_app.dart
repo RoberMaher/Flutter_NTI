@@ -13,6 +13,8 @@ import 'package:marketi_nti/core/networking/api_consumer.dart';
 import 'package:marketi_nti/home/home_view.dart';
 import 'package:marketi_nti/navigation/bottom_navigation_bar.dart';
 import 'package:marketi_nti/on_boarding/on_boarding.dart';
+import 'package:marketi_nti/profile/Profile_cubit/profile_cubit.dart';
+import 'package:marketi_nti/profile/profile_view.dart';
 
 class MarktiNtiApp extends StatelessWidget {
   const MarktiNtiApp({super.key});
@@ -49,6 +51,10 @@ class MarktiNtiApp extends StatelessWidget {
               child: VerificationView(email: email),
             );
           },
+          '/profile': (context) => BlocProvider(
+            create: (context) => ProfileCubit(apiConsumer: ApiConsumer()),
+            child: ProfileView(),
+          ),
         },
       ),
     );
