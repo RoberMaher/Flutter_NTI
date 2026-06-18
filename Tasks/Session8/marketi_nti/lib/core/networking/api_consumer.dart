@@ -4,7 +4,7 @@ class ApiConsumer {
   Dio dio = Dio();
 
   ApiConsumer() {
-    // dio.options.baseUrl = 'https://accessories-eshop.runasp.net/api';
+    dio.options.baseUrl = 'https://accessories-eshop.runasp.net/api/';
   }
 
   Future<Response> post({
@@ -14,18 +14,11 @@ class ApiConsumer {
     return await Dio().post(url, data: data);
   }
 
-  Future<Response> get(
-    Map<String, dynamic>? queryParameters, {
-    required String url,
-
-    required Map<String, dynamic> data,
-  }) async {
+  Future<Response> get({required String url, required String token}) async {
     Response response = await dio.get(
+      options: Options(headers: {'Authorization': 'Bearer $token'}),
       url,
-      data: data,
-      queryParameters: queryParameters,
     );
-
     return response;
   }
 
