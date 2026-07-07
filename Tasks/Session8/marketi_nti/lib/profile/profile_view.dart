@@ -127,20 +127,20 @@ class ProfileView extends StatelessWidget {
                       label: "Full Name",
                       value: user.fullName ?? "N/A",
                       iconPath:
-                          "assets/icons/user.png", // Replace with your actual icon path
+                          'assets/icons/Name_Icon.png'
                     ),
                     SizedBox(height: 15.h),
                     ProfileInfoField(
                       label: "Email Address",
                       value: user.email ?? "N/A",
                       iconPath:
-                          "assets/icons/email.png", // Replace with your actual icon path
+                          'assets/icons/evaEmailOutline2.png',
                     ),
                     SizedBox(height: 15.h),
                     ProfileInfoField(
                       label: "Phone Number",
                       iconPath:
-                          "assets/icons/phone.png", // Replace with your actual icon path
+                          'assets/icons/Phone.png',
                     ),
 
                     SizedBox(height: 30.h),
