@@ -1,3 +1,4 @@
+// core/networking/api_consumer.dart
 import 'package:dio/dio.dart';
 
 class ApiConsumer {
@@ -14,13 +15,14 @@ class ApiConsumer {
     return await Dio().post(url, data: data);
   }
 
-  Future<Response> get({required String url, required String token}) async {
-    Response response = await dio.get(
-      options: Options(headers: {'Authorization': 'Bearer $token'}),
-      url,
-    );
-    return response;
-  }
+  Future<Response> get({required String url, String? token}) async {
+  return await dio.get(
+    url,
+    options: Options(
+      headers: token != null ? {'Authorization': 'Bearer $token'} : null,
+    ),
+  );
+}
 
   Future<Response> put(
     Map<String, dynamic>? queryParameters, {
