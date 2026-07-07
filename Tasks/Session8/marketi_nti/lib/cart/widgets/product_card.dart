@@ -1,6 +1,7 @@
+// cart/widgets/product_card.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:marketi_nti/cart/models/product_model.dart';
+import 'package:marketi_nti/home/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
