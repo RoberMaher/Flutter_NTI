@@ -1,7 +1,10 @@
+// navigation/bottom_navigation_bar.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi_nti/cart/cart_view.dart';
 import 'package:marketi_nti/core/networking/api_consumer.dart';
+import 'package:marketi_nti/fav/fav_view.dart';
+import 'package:marketi_nti/home/cubit/products_cubit.dart';
 import 'package:marketi_nti/home/home_view.dart';
 import 'package:marketi_nti/profile/Profile_cubit/profile_cubit.dart';
 import 'package:marketi_nti/profile/profile_view.dart';
@@ -11,13 +14,16 @@ class BottomNavBar extends StatefulWidget {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    HomeView(),
-    CartView(),
-    Center(child: Text('Favorite')),
     BlocProvider(
       create: (context) =>
-          ProfileCubit(apiConsumer: ApiConsumer())
-            ..getCurrentUserInfo(),
+          ProductsCubit(apiConsumer: ApiConsumer())..getAllProducts(),
+      child: HomeView(),
+    ),
+    CartView(),
+    FavView(),
+    BlocProvider(
+      create: (context) =>
+          ProfileCubit(apiConsumer: ApiConsumer())..getCurrentUserInfo(),
       child: const ProfileView(),
     ),
   ];
