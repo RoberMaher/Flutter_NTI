@@ -1,6 +1,7 @@
+// cart/widgets/all_products_bloc_builder.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marketi_nti/cart/cubit/products_cubit.dart';
+import 'package:marketi_nti/home/cubit/products_cubit.dart';
 import 'package:marketi_nti/cart/widgets/product_card.dart';
 
 class AllProductsBlocBuilder extends StatelessWidget {
