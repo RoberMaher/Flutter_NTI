@@ -1,3 +1,4 @@
+// auth/verification_view.dart
 import 'dart:async';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +94,7 @@ class _VerificationViewState extends State<VerificationView> {
             btnOkOnPress: () {
               Navigator.pushNamedAndRemoveUntil(
                 context,
-                '/bottom_navigation',
+                '/sign_in',
                 (route) => false,
               );
             },
