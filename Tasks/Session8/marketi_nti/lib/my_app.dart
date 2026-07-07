@@ -1,3 +1,4 @@
+// my_app.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,11 @@ import 'package:marketi_nti/auth/sign_up_view.dart';
 import 'package:marketi_nti/auth/verification_cubit/verification_cubit.dart';
 import 'package:marketi_nti/auth/verification_view.dart';
 import 'package:marketi_nti/cart/cart_view.dart';
+import 'package:marketi_nti/cart/cubit/cart_cubit.dart';
 import 'package:marketi_nti/core/networking/api_consumer.dart';
+import 'package:marketi_nti/fav/cubit/fav_cubit.dart';
+import 'package:marketi_nti/fav/fav_view.dart';
+import 'package:marketi_nti/home/cubit/products_cubit.dart';
 import 'package:marketi_nti/home/home_view.dart';
 import 'package:marketi_nti/navigation/bottom_navigation_bar.dart';
 import 'package:marketi_nti/on_boarding/on_boarding.dart';
@@ -23,39 +28,51 @@ class MarktiNtiApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/onboarding',
-        routes: {
-          '/sign_in': (context) => BlocProvider(
-            create: (context) => SignInCubit(apiConsumer: ApiConsumer()),
-            child: SignInView(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => CartCubit()),
+          BlocProvider(create: (_) => FavCubit()),
+          BlocProvider(
+            create: (_) =>
+                ProductsCubit(apiConsumer: ApiConsumer())..getAllProducts(),
           ),
-          '/onboarding': (context) => OnBoarding(),
-          '/sign_up': (context) => BlocProvider(
-            create: (context) => SignUpCubit(apiConsumer: ApiConsumer()),
-            child: SignUpView(),
+          BlocProvider(
+            create: (_) =>
+                ProfileCubit(apiConsumer: ApiConsumer())..getCurrentUserInfo(),
           ),
-          '/forgot_password': (context) => ForgotPassword(),
-          '/home': (context) => HomeView(),
-          '/bottom_navigation': (context) => BottomNavBar(),
-          '/cart': (context) => CartView(),
-          '/verification': (context) {
-            final args = ModalRoute.of(context)?.settings.arguments;
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/onboarding',
+          routes: {
+            '/sign_in': (context) => BlocProvider(
+              create: (context) => SignInCubit(apiConsumer: ApiConsumer()),
+              child: SignInView(),
+            ),
+            '/onboarding': (context) => OnBoarding(),
+            '/sign_up': (context) => BlocProvider(
+              create: (context) => SignUpCubit(apiConsumer: ApiConsumer()),
+              child: SignUpView(),
+            ),
+            '/forgot_password': (context) => ForgotPassword(),
+            '/cart': (context) => const CartView(),
+            '/fav': (context) => const FavView(),
+            '/home': (context) => HomeView(),
+            '/bottom_navigation': (context) => BottomNavBar(),
+            '/verification': (context) {
+              final args = ModalRoute.of(context)?.settings.arguments;
 
-            final email = (args is String) ? args : '';
+              final email = (args is String) ? args : '';
 
-            return BlocProvider(
-              create: (context) =>
-                  VerificationCubit(apiConsumer: ApiConsumer()),
-              child: VerificationView(email: email),
-            );
+              return BlocProvider(
+                create: (context) =>
+                    VerificationCubit(apiConsumer: ApiConsumer()),
+                child: VerificationView(email: email),
+              );
+            },
+            '/profile': (context) => ProfileView(),
           },
-          '/profile': (context) => BlocProvider(
-            create: (context) => ProfileCubit(apiConsumer: ApiConsumer()),
-            child: ProfileView(),
-          ),
-        },
+        ),
       ),
     );
   }
